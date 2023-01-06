@@ -1,4 +1,7 @@
-﻿using System;
+//Program to Valid date without using inbuilt functions
+
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -72,16 +75,17 @@ namespace SampleConApp
                 case 3:
                 case 5:
                 case 7:
-                case 9:
-                case 11:
-                    return checked30(year, month, date);
-                case 4:
-                case 6:
                 case 8:
                 case 10:
-                case 12: return checked31(year, month, date);
+                case 12:  
+                    return checked31(year, month, date); // Validation done on the bases of month and number of days that is less than or equal to 31 days.
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                         return checked30(year, month, date); // Validation done on the bases of month and number of days that is less than or equal to 30 days.
                 case 2:
-                    return CheckLeap(year, month, date);
+                    return CheckLeap(year, month, date); // validation is done through by first checking leap year and then comparing with respective number of days
                 default:
                     return false;
             }
@@ -95,7 +99,7 @@ namespace SampleConApp
             int month = utilities.GetNumber("Enter Month");
             int year = utilities.GetNumber("Enter year");
 
-            if (isValidDate(year, month, date) == true)
+            if (isValidDate(year, month, date)) // Function is called which is gonna return either true or false
             {
                 Console.WriteLine("Valid Year");
                 return;
